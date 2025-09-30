@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modern website foundation with elegant dark design">
+  <title>Website Foundation</title>
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      /* Dark color palette with elegant geometric feel */
+      --color-bg-primary: oklch(0.12 0.01 270);
+      --color-bg-secondary: oklch(0.18 0.015 270);
+      --color-bg-accent: oklch(0.25 0.02 270);
+      
+      --color-text-primary: oklch(0.95 0.01 270);
+      --color-text-secondary: oklch(0.70 0.01 270);
+      --color-text-muted: oklch(0.50 0.01 270);
+      
+      --color-accent: oklch(0.75 0.15 280);
+      --color-accent-hover: oklch(0.85 0.18 280);
+      
+      /* Spacing scale - balanced and modular */
+      --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+      --space-sm: clamp(0.75rem, 1.5vw, 1rem);
+      --space-md: clamp(1rem, 2vw, 1.5rem);
+      --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+      --space-xl: clamp(2rem, 4vw, 4rem);
+      --space-2xl: clamp(3rem, 6vw, 6rem);
+      
+      /* Typography - modern geometric */
+      --font-primary: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-size-base: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+      --font-size-sm: clamp(0.875rem, 0.8rem + 0.2vw, 1rem);
+      --font-size-lg: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
+      --font-size-xl: clamp(1.75rem, 1.5rem + 0.75vw, 2.5rem);
+      --font-size-2xl: clamp(2.5rem, 2rem + 1.5vw, 4rem);
+      
+      --line-height-tight: 1.2;
+      --line-height-base: 1.6;
+      --line-height-relaxed: 1.8;
+      
+      /* Geometric shapes and borders */
+      --border-radius: 2px;
+      --border-width: 1px;
+      
+      /* Smooth transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text-primary);
+      background-color: var(--color-bg-primary);
+      min-block-size: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4, h5, h6 {
+      line-height: var(--line-height-tight);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    
+    h1 { font-size: var(--font-size-2xl); }
+    h2 { font-size: var(--font-size-xl); }
+    h3 { font-size: var(--font-size-lg); }
+    
+    p {
+      text-wrap: pretty;
+      max-inline-size: 65ch;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* ===== LAYOUT UTILITIES ===== */
+    .container {
+      inline-size: 100%;
+      max-inline-size: 1400px;
+      margin-inline: auto;
+      padding-inline: var(--space-md);
+    }
+    
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 100;
+      background-color: var(--color-bg-primary);
+      border-block-end: var(--border-width) solid var(--color-bg-accent);
+      backdrop-filter: blur(10px);
+      transition: background-color var(--transition-base);
+    }
+    
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: var(--space-md);
+      gap: var(--space-md);
+    }
+    
+    .header__logo {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--color-text-primary);
+      transition: color var(--transition-fast);
+    }
+    
+    .header__logo:hover {
+      color: var(--color-accent-hover);
+    }
+    
+    /* Navigation */
+    .nav__list {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav__link {
+      position: relative;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+      padding-block: var(--space-xs);
+    }
+    
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inline-size: 0;
+      block-size: 1px;
+      background-color: var(--color-accent);
+      transition: inline-size var(--transition-base);
+    }
+    
+    .nav__link:hover {
+      color: var(--color-text-primary);
+    }
+    
+    .nav__link:hover::after {
+      inline-size: 100%;
+    }
+    
+    /* Mobile menu toggle */
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      padding: var(--space-xs);
+    }
+    
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      min-block-size: clamp(500px, 80vh, 800px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background-color: var(--color-bg-secondary);
+    }
+    
+    /* Asymmetrical layout with geometric shapes */
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero__content {
+      max-inline-size: 600px;
+    }
+    
+    .hero__title {
+      margin-block-end: var(--space-md);
+      background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero__description {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      margin-block-end: var(--space-lg);
+      line-height: var(--line-height-relaxed);
+    }
+    
+    .hero__cta {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    
+    /* Abstract geometric background shapes */
+    .hero__shapes {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.4;
+      overflow: hidden;
+    }
+    
+    .shape {
+      position: absolute;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-bg-accent) 100%);
+      opacity: 0.15;
+      animation: float var(--transition-slow) ease-in-out infinite alternate;
+    }
+    
+    .shape--1 {
+      inline-size: 300px;
+      block-size: 300px;
+      inset-block-start: 10%;
+      inset-inline-end: 5%;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      animation-delay: 0s;
+    }
+    
+    .shape--2 {
+      inline-size: 200px;
+      block-size: 200px;
+      inset-block-end: 15%;
+      inset-inline-start: 10%;
+      clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+      animation-delay: 0.5s;
+    }
+    
+    .shape--3 {
+      inline-size: 150px;
+      block-size: 150px;
+      inset-block-start: 50%;
+      inset-inline-end: 30%;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      animation-delay: 1s;
+    }
+    
+    @keyframes float {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+      to {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+    
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      padding-block: var(--space-sm);
+      padding-inline: var(--space-lg);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      border: var(--border-width) solid transparent;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-align: center;
+    }
+    
+    /* Ghost button style - subtle */
+    .btn--ghost {
+      color: var(--color-text-primary);
+      border-color: var(--color-text-secondary);
+      background-color: transparent;
+    }
+    
+    .btn--ghost:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background-color: var(--color-bg-accent);
+    }
+    
+    .btn--primary {
+      color: var(--color-text-primary);
+      border-color: var(--color-accent);
+      background-color: transparent;
+    }
+    
+    .btn--primary:hover {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+      background-color: var(--color-bg-secondary);
+      border-block-start: var(--border-width) solid var(--color-bg-accent);
+      padding-block: var(--space-2xl);
+      margin-block-start: var(--space-2xl);
+    }
+    
+    .footer__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+    }
+    
+    .footer__section-title {
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      margin-block-end: var(--space-md);
+      color: var(--color-text-primary);
+    }
+    
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .footer__link {
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+      transition: color var(--transition-fast);
+    }
+    
+    .footer__link:hover {
+      color: var(--color-accent);
+    }
+    
+    .footer__bottom {
+      margin-block-start: var(--space-xl);
+      padding-block-start: var(--space-lg);
+      border-block-start: var(--border-width) solid var(--color-bg-accent);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav__list {
+        position: fixed;
+        inset-block-start: 100%;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        flex-direction: column;
+        background-color: var(--color-bg-primary);
+        padding: var(--space-lg);
+        gap: var(--space-md);
+        border-block-end: var(--border-width) solid var(--color-bg-accent);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-base);
+      }
+      
+      .nav__list.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav__toggle {
+        display: block;
+      }
+      
+      .hero__inner {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero__content {
+        max-inline-size: 100%;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .hero__inner {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+  </style>
+</head>
+<body>
+   HEADER 
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="#" class="header__logo">Foundation</a>
+        
+        <nav class="nav">
+          <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          
+          <ul class="nav__list">
+            <li><a href="#" class="nav__link">Home</a></li>
+            <li><a href="#" class="nav__link">About</a></li>
+            <li><a href="#" class="nav__link">Services</a></li>
+            <li><a href="#" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+   HERO SECTION 
+  <section class="hero">
+    <div class="hero__shapes" aria-hidden="true">
+      <div class="shape shape--1"></div>
+      <div class="shape shape--2"></div>
+      <div class="shape shape--3"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title">Build something extraordinary</h1>
+          <p class="hero__description">
+            A modern, elegant foundation for your next project. Clean code, smooth interactions, and a design that speaks for itself.
+          </p>
+          <div class="hero__cta">
+            <button class="btn btn--primary">Get Started</button>
+            <button class="btn btn--ghost">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   FOOTER 
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__section">
+          <h3 class="footer__section-title">Product</h3>
+          <ul class="footer__list">
+            <li><a href="#" class="footer__link">Features</a></li>
+            <li><a href="#" class="footer__link">Pricing</a></li>
+            <li><a href="#" class="footer__link">Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Company</h3>
+          <ul class="footer__list">
+            <li><a href="#" class="footer__link">About</a></li>
+            <li><a href="#" class="footer__link">Blog</a></li>
+            <li><a href="#" class="footer__link">Careers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Support</h3>
+          <ul class="footer__list">
+            <li><a href="#" class="footer__link">Help Center</a></li>
+            <li><a href="#" class="footer__link">Contact</a></li>
+            <li><a href="#" class="footer__link">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>&copy; 2025 Foundation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+   VANILLA JAVASCRIPT 
+  <script>
+    // Mobile navigation toggle
+    (function() {
+      const toggle = document.querySelector('.nav__toggle');
+      const navList = document.querySelector('.nav__list');
+      
+      if (toggle && navList) {
+        toggle.addEventListener('click', function() {
+          const isOpen = navList.classList.contains('is-open');
+          navList.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', !isOpen);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!event.target.closest('.nav') && navList.classList.contains('is-open')) {
+            navList.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+    
+    // Header background on scroll
+    (function() {
+      const header = document.querySelector('.header');
+      let lastScroll = 0;
+      
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+          header.style.backgroundColor = 'oklch(0.12 0.01 270 / 0.95)';
+        } else {
+          header.style.backgroundColor = 'var(--color-bg-primary)';
+        }
+        
+        lastScroll = currentScroll;
+      });
+    })();
+  </script>
+</body>
+</html>
