@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Korlan | Data Science & Development</title>
+  <meta name="description" content="Explore my portfolio of projects, and professional experience.">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Korlan - Data Science Portfolio">
+  <meta property="og:description" content="Explore my portfolio of projects, and professional experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{YOUR_WEBSITE_URL}}">
+  <meta property="og:image" content="https://media.sidefx.com/images/multi_video_tutorial/intro-to-path-tracing-concepts/Intro_to_Path_Tracing_THUMB.jpg">
+  
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  
+  <!-- Skip to Content Link (Accessibility) -->
+  <a href="#main-content" class="skip-to-content" data-testid="link-skip-content">
+    Skip to main content
+  </a>
+
+  <!-- ========================================
+       HEADER - Navigation
+       ======================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <!-- Logo / Site Name -->
+        <div class="logo">
+          <a href="#home" data-testid="link-logo">Korlan | Data Science</a> <!-- TODO: Add your site name or logo -->
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" data-testid="link-nav-home">Home</a></li> <!-- TODO: Add nav label (e.g., "Home") -->
+          <li><a href="#about" data-testid="link-nav-about">About</a></li> <!-- TODO: Add nav label (e.g., "About") -->
+          <li><a href="#work" data-testid="link-nav-work">Work</a></li> <!-- TODO: Add nav label (e.g., "Work") -->
+          <li><a href="#contact" data-testid="link-nav-contact">Contact</a></li> <!-- TODO: Add nav label (e.g., "Contact") -->
+        </ul>
+
+        <!-- Mobile Menu Toggle -->
+        <button 
+          class="nav-toggle" 
+          id="navToggle" 
+          aria-expanded="false" 
+          aria-controls="navMenu"
+          aria-label="Toggle navigation menu"
+          data-testid="button-nav-toggle">
+          <span class="hamburger"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================
+       MAIN CONTENT
+       ======================================== -->
+  <main id="main-content" role="main">
+
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <section id="home" class="hero-section" data-animate="fade-in">
+      <!-- Geometric Background SVG -->
+      <div class="hero-background" aria-hidden="true">
+        <svg class="geometric-shapes" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+          <!-- TODO: Customize or add more geometric shapes -->
+          <circle cx="200" cy="150" r="120" class="shape shape-1" />
+          <polygon points="900,100 1050,300 750,300" class="shape shape-2" />
+          <rect x="600" y="500" width="200" height="200" class="shape shape-3" />
+          <circle cx="1000" cy="600" r="80" class="shape shape-4" />
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title" data-testid="text-hero-title">Hi, I'm Korlan</h1> <!-- TODO: Add your main headline -->
+          <p class="hero-subtitle" data-testid="text-hero-subtitle">I turn raw into real</p> <!-- TODO: Add your subheadline -->
+          <a href="#work" class="cta-button" data-testid="button-hero-cta">
+            View My Work <!-- TODO: Add CTA label (e.g., "View My Work") -->
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
+    <section id="about" class="about-section section-padding" data-animate="slide-up">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Profile Image -->
+          <div class="about-image" data-animate-delay="0">
+            <div class="image-wrapper">
+              <img 
+                src="images/MyPortfolioImage.jpg" 
+                alt="Portrait of Korlan, data scientist" 
+                data-testid="img-profile"
+                loading="lazy">
+              <!-- TODO: Add your profile image URL and descriptive alt text -->
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="about-content" data-animate-delay="200">
+            <h2 class="section-title" data-testid="text-about-title">About Me</h2>
+            <p class="about-bio" data-testid="text-about-bio">
+                Data Engineer turned Data Scientist, I tailor and implement data driven solutions to help breakthrough domains. My passion of maths backing ML/AI helps me design solutions that are just right. <!-- TODO: Add your short bio (2-3 paragraphs) -->
+            </p>
+
+            <!-- Highlights -->
+            <div class="highlights-grid">
+              <div class="highlight-item" data-testid="card-highlight-1">
+                <div class="highlight-number">01</div>
+                <h3>ML/DL</h3> <!-- TODO: Add first highlight title -->
+                <p>I refine models: fine-tuning, prompt-tuning, distillation—grounded in sharp data analysis.</p> <!-- TODO: Add first highlight description -->
+              </div>
+              <div class="highlight-item" data-testid="card-highlight-2">
+                <div class="highlight-number">02</div>
+                <h3>Computer Graphics</h3> <!-- TODO: Add second highlight title -->
+                <p>I turn geometry into images via algorithmic optimizations and GPU acceleration.</p> <!-- TODO: Add second highlight description -->
+              </div>
+              <div class="highlight-item" data-testid="card-highlight-3">
+                <div class="highlight-number">03</div>
+                <h3>Poetry</h3> <!-- TODO: Add third highlight title -->
+                <p>I write poetry to express my thoughts and feelings in Russian and English.</p> <!-- TODO: Add third highlight description -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         WORK / PORTFOLIO SECTION - CAROUSEL
+         ======================================== -->
+    <section id="work" class="work-section section-padding" data-animate="fade-in">
+      <div class="container">
+        <h2 class="section-title centered" data-testid="text-work-title">Selected Work</h2>
+        <p class="section-subtitle centered" data-testid="text-work-subtitle">
+            I have been implementing data driven solution across various domains. From providing meaningful insights with predictive analytics to implementing Machine and Deep learning models. Here are some of the projects with my implementation: <!-- TODO: Add work section subtitle -->
+        </p>
+
+        <!-- Projects Carousel Wrapper -->
+        <div 
+          class="carousel-wrapper" 
+          role="region" 
+          aria-roledescription="carousel" 
+          aria-label="Selected work">
+          
+          <!-- Previous Button -->
+          <button 
+            class="carousel-button carousel-button--prev" 
+            id="carouselPrev"
+            aria-label="Previous project"
+            data-testid="button-carousel-prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Carousel Track -->
+          <div 
+            class="carousel-track" 
+            id="carouselTrack"
+            aria-live="polite">
+            
+            <!-- Project Card 1 -->
+            <article 
+              class="project-card" 
+              data-animate="reveal" 
+              tabindex="0"
+              data-testid="card-project-1">
+              <a href="https://github.com/K0ra/diff_render" class="project-link" aria-label="View Differential Rendering">
+                <!-- TODO: Add project link URL -->
+                <div class="project-image">
+                  <img 
+                    src="https://thalesfm.github.io/differentiable-renderer/docs/images/cbox.png" 
+                    alt="Differential Rendering" 
+                    loading="lazy">
+                  <!-- TODO: Add project image URL and descriptive alt text -->
+                  <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Differential Rendering</h3> <!-- TODO: Add project title -->
+                  <p class="project-description">Simple Differential Path Tracer using Embree</p> <!-- TODO: Add project description -->
+                  <div class="project-tags">
+                    <!-- TODO: Add project tags/technologies (e.g., "React", "Node.js", "MongoDB") -->
+                    <span class="tag">Embree</span>
+                    <span class="tag">Imath</span>
+                    <span class="tag">C/C++</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article 
+              class="project-card" 
+              data-animate="reveal" 
+              tabindex="0"
+              data-testid="card-project-2">
+              <a href="https://github.com/gagarinsname/YOLO-World/tree/master" class="project-link" aria-label="View Fast Potatoes Detection">
+                <!-- TODO: Add project link URL -->
+                <div class="project-image">
+                  <img 
+                    src="https://healthyfamilyproject.com/wp-content/uploads/2020/05/Potatoes-background.jpg" 
+                    alt="Fast Potatoes Detection" 
+                    loading="lazy">
+                  <!-- TODO: Add project image URL and descriptive alt text -->
+                  <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Potatoes Detection on a mobile device</h3> <!-- TODO: Add project title -->
+                  <p class="project-description">A smaller model, distilled from YOLO-World, for faster mobile detection.</p> <!-- TODO: Add project description -->
+                  <div class="project-tags">
+                    <!-- TODO: Add project tags/technologies -->
+                    <span class="tag">MMYOLO</span>
+                    <span class="tag">Transformers</span>
+                    <span class="tag">OpenCV</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article 
+              class="project-card" 
+              data-animate="reveal" 
+              tabindex="0"
+              data-testid="card-project-3">
+              <a href="https://github.com/K0ra/telegram-voice-ai-bot" class="project-link" aria-label="View EchoSense">
+                <!-- TODO: Add project link URL -->
+                <div class="project-image">
+                  <img 
+                    src="https://media.licdn.com/dms/image/v2/D4E22AQGVjWg-ZrKRBA/feedshare-shrink_1280/B4EZneobXYJ0As-/0/1760376764875?e=1763596800&v=beta&t=8C-Jo3arz_eNfX02gsw4ufbaXi4HLy_RwhdWgBuSiys" 
+                    alt="EchoSense" 
+                    loading="lazy">
+                  <!-- TODO: Add project image URL and descriptive alt text -->
+                  <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">EchoSense</h3> <!-- TODO: Add project title -->
+                  <p class="project-description">A voice agent that listens to your short daily reflections and detects stress, fatigue, or positivity in your tone. It logs your emotional trend and offers gentle insights or affirmations.</p> <!-- TODO: Add project description -->
+                  <div class="project-tags">
+                    <!-- TODO: Add project tags/technologies -->
+                    <span class="tag">VoiceFlow</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">WhisperAI</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+          </div>
+
+          <!-- Next Button -->
+          <button 
+            class="carousel-button carousel-button--next" 
+            id="carouselNext"
+            aria-label="Next project"
+            data-testid="button-carousel-next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         DUO IMAGE SECTION
+         ======================================== -->
+    <section class="duo-section section-padding" data-animate="fade-in">
+      <div class="container">
+        <div class="duo-grid">
+          <!-- Text Content -->
+          <div class="duo-content" data-animate-delay="0">
+            <h2 class="section-title" data-testid="text-duo-heading">My Poetry</h2> <!-- TODO: Add duo section heading -->
+            <p class="duo-body" data-testid="text-duo-body">
+              I write poems since I was 14. See my published poems. This is the excerpt from my poem: <!-- TODO: Add duo section body text -->
+            </p>
+            <div class="poem-container">
+                <div class="poem-russian">
+                  <div class="poem-line">Ее глаза манят в глубинку,</div>
+                  <div class="poem-line">Рисуют дом ветром степным;</div>
+                  <div class="poem-line">Ее уста нежны и пылки,</div>
+                  <div class="poem-line">И разжигают в груди дым.</div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Image Composition -->
+          <div class="duo-images" data-animate-delay="200">
+            <div class="duo-image-left">
+              <img 
+                src="https://book-present.ru/wp-content/uploads/2019/09/podarochnaya-kniga-sergej-esenin-izbrannoe.jpg" 
+                alt="Poem book" 
+                data-testid="img-duo-left"
+                loading="lazy">
+              <!-- TODO: Add left image URL and alt text -->
+            </div>
+            <div class="duo-image-right">
+              <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-DqBUG5HrSr_phkKLiqZEVe8-DFjwSPBBKgtVOsPlrqvachwRKvIZSYqYOBORfT8fHf8&usqp=CAU" 
+                alt="Website with my poems" 
+                data-testid="img-duo-right"
+                loading="lazy">
+              <!-- TODO: Add right image URL and alt text -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         VIDEO SECTION
+         ======================================== -->
+    <section 
+      class="video-section section-padding" 
+      role="region" 
+      aria-label="{{VIDEO_TITLE}}"
+      data-animate="fade-in">
+      <!-- TODO: Add video title for ARIA label -->
+      <div class="container">
+        <div class="video-block" data-animate="reveal">
+          
+          <!-- Video Content -->
+          <div class="video-content">
+            <h2 class="section-title" data-testid="text-video-heading">{{VIDEO_SECTION_HEADING}}</h2>
+            <!-- TODO: Add video section heading -->
+            <p class="video-subtext" data-testid="text-video-subtext">
+              {{VIDEO_SECTION_SUBTEXT}} <!-- TODO: Add video section description/subtext -->
+            </p>
+
+            <!-- Optional Transcript -->
+            <details class="video-transcript">
+              <summary>View Transcript</summary>
+              <div class="transcript-content">
+                {{VIDEO_TRANSCRIPT}} <!-- TODO: Add video transcript (optional) -->
+              </div>
+            </details>
+
+            <!-- Toggle Embed Button -->
+            <button 
+              class="toggle-embed-button" 
+              id="toggleEmbedButton"
+              aria-pressed="false"
+              aria-controls="videoPlayer"
+              data-testid="button-toggle-embed">
+              {{WATCH_EMBED}} <!-- TODO: Add button text (e.g., "Watch on YouTube") -->
+            </button>
+          </div>
+
+          <!-- Video Media -->
+          <div class="video-media">
+            
+            <!-- Native Video Player -->
+            <div class="video-player-wrapper" id="videoPlayerWrapper">
+              <video 
+                id="videoPlayer"
+                class="video-player"
+                preload="metadata"
+                playsinline
+                controls
+                muted
+                poster="{{VIDEO_POSTER}}"
+                aria-describedby="videoCaption"
+                data-testid="video-player">
+                <!-- TODO: Add video poster image URL -->
+                <source src="{{VIDEO_SRC_MP4}}" type="video/mp4">
+                <!-- TODO: Add MP4 video source URL -->
+                <track 
+                  kind="captions" 
+                  srclang="en" 
+                  src="{{VIDEO_TRACK_VTT}}" 
+                  label="English">
+                <!-- TODO: Add WebVTT captions file URL (optional) -->
+                Your browser does not support the video tag.
+              </video>
+              <p class="video-caption" id="videoCaption" data-testid="text-video-caption">
+                {{VIDEO_CAPTION}} <!-- TODO: Add video caption/description -->
+              </p>
+            </div>
+
+            <!-- Privacy-Enhanced Embed (Hidden by default) -->
+            <div class="video-embed-wrapper" id="videoEmbedWrapper" style="display: none;">
+              <iframe
+                id="videoEmbed"
+                class="video-embed"
+                src=""
+                data-src="{{VIDEO_EMBED_URL}}"
+                title="{{VIDEO_TITLE}}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                data-testid="video-embed">
+                <!-- TODO: Add YouTube nocookie or Vimeo embed URL -->
+              </iframe>
+              <p class="video-caption" data-testid="text-embed-caption">
+                {{VIDEO_CAPTION}}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT SECTION
+         ======================================== -->
+    <section id="contact" class="contact-section section-padding" data-animate="slide-up">
+      <div class="container">
+        <h2 class="section-title centered" data-testid="text-contact-heading">{{CONTACT_HEADING}}</h2> <!-- TODO: Add contact heading -->
+        <p class="section-subtitle centered" data-testid="text-contact-subtext">
+          {{CONTACT_SUBTEXT}} <!-- TODO: Add contact subtext -->
+        </p>
+
+        <div class="contact-grid">
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm" data-testid="form-contact">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                aria-required="true"
+                data-testid="input-name"
+                placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                aria-required="true"
+                data-testid="input-email"
+                placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                required 
+                aria-required="true"
+                data-testid="input-message"
+                placeholder="Your message here..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button" data-testid="button-submit">
+              Send Message
+            </button>
+          </form>
+
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <div class="contact-links">
+              <a href="mailto:{{CONTACT_EMAIL}}" class="contact-link" data-testid="link-email">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>{{CONTACT_EMAIL}}</span> <!-- TODO: Add your email -->
+              </a>
+
+              <a href="{{CONTACT_LINKEDIN}}" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-linkedin">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>LinkedIn</span> <!-- TODO: Add your LinkedIn URL -->
+              </a>
+
+              <a href="{{CONTACT_GITHUB}}" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-github">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>GitHub</span> <!-- TODO: Add your GitHub URL -->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <p class="copyright" data-testid="text-copyright">
+          &copy; 2025 Korlan | Data Science. All rights reserved. <!-- TODO: Add your name for copyright -->
+        </p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{FOOTER_LINK_1_URL}}" data-testid="link-footer-1">{{FOOTER_LINK_1_LABEL}}</a> <!-- TODO: Add footer link -->
+          <a href="{{FOOTER_LINK_2_URL}}" data-testid="link-footer-2">{{FOOTER_LINK_2_LABEL}}</a> <!-- TODO: Add footer link -->
+          <a href="{{FOOTER_LINK_3_URL}}" data-testid="link-footer-3">{{FOOTER_LINK_3_LABEL}}</a> <!-- TODO: Add footer link -->
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
