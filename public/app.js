@@ -454,6 +454,41 @@ const CONFIG = {
       }
     });
   }
+
+  // ========================================
+  // THEME TOGGLE (Footer)
+  // ========================================
+  function initThemeToggle() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    const root = document.documentElement;
+    const STORAGE_KEY = 'pref-theme';
+
+    function applyTheme(theme) {
+      if (theme === 'light' || theme === 'dark') {
+        root.setAttribute('data-theme', theme);
+        btn.setAttribute('aria-pressed', String(theme === 'dark'));
+        btn.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+      } else {
+        root.removeAttribute('data-theme');
+        btn.setAttribute('aria-pressed', 'false');
+        btn.textContent = 'Dark mode';
+      }
+    }
+
+    // Load saved preference
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) applyTheme(saved);
+    else applyTheme(null);
+
+    btn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch {}
+    });
+  }
   
   // ========================================
   // VIDEO SECTION
@@ -498,7 +533,7 @@ const CONFIG = {
       }
     });
   
-    // Video autoplay/pause with IntersectionObserver
+    // Video autoplay/pause with IntersectionObserver for legacy section
     initVideoAutoplay();
   }
   
@@ -506,43 +541,48 @@ const CONFIG = {
    * Initialize video autoplay when 60% visible, pause when out of view
    */
   function initVideoAutoplay() {
-    const videoPlayer = document.getElementById('videoPlayer');
-    
-    if (!videoPlayer) {
-      return;
-    }
-  
-    // Skip autoplay if user prefers reduced motion
-    if (prefersReducedMotion()) {
-      return;
-    }
-  
-    const videoObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
+    const legacy = document.getElementById('videoPlayer');
+    if (legacy && !prefersReducedMotion()) {
+      const legacyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-            // Video is 60% visible - autoplay if muted
-            if (videoPlayer.muted) {
-              videoPlayer.play().catch(err => {
-                console.log('Autoplay prevented:', err);
-              });
-            }
+            if (legacy.muted) legacy.play().catch(() => {});
           } else {
-            // Video is less than 60% visible or out of view - pause
-            if (!videoPlayer.paused) {
-              videoPlayer.pause();
-            }
+            legacy.pause();
           }
         });
-      },
-      {
-        threshold: [0, 0.6, 1],
-        rootMargin: '0px',
-      }
-    );
-  
-    videoObserver.observe(videoPlayer);
+      }, { threshold: [0, 0.6, 1] });
+      legacyObserver.observe(legacy);
+    }
   }
+
+  // ========================================
+  // TASK 4: Video Control via IntersectionObserver (50% threshold)
+  // ========================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('backgroundVideo');
+    if (!video) return;
+
+    const reduced = prefersReducedMotion();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || document.visibilityState !== 'visible') {
+          video.pause();
+          return;
+        }
+        if (!reduced) {
+          video.play().catch((e) => console.debug('Video play failed:', e));
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(video);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible') video.pause();
+    });
+  });
   
   // ========================================
   // PERFORMANCE MONITORING
@@ -586,6 +626,7 @@ const CONFIG = {
     initContactForm();
     initHeaderScroll();
     initKeyboardNav();
+    initThemeToggle();
     initVideoSection();
     
     // Log performance in development

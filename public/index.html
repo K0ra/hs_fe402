@@ -322,95 +322,16 @@
     <!-- ========================================
          VIDEO SECTION
          ======================================== -->
-    <section 
-      class="video-section section-padding" 
-      role="region" 
-      aria-label="{{VIDEO_TITLE}}"
-      data-animate="fade-in">
-      <!-- TODO: Add video title for ARIA label -->
-      <div class="container">
-        <div class="video-block" data-animate="reveal">
-          
-          <!-- Video Content -->
-          <div class="video-content">
-            <h2 class="section-title" data-testid="text-video-heading">{{VIDEO_SECTION_HEADING}}</h2>
-            <!-- TODO: Add video section heading -->
-            <p class="video-subtext" data-testid="text-video-subtext">
-              {{VIDEO_SECTION_SUBTEXT}} <!-- TODO: Add video section description/subtext -->
-            </p>
+    <section class="video-section" aria-label="Video Auto Play/Pause">
+      <h2 class="section-title">Play my work ...</h2>
 
-            <!-- Optional Transcript -->
-            <details class="video-transcript">
-              <summary>View Transcript</summary>
-              <div class="transcript-content">
-                {{VIDEO_TRANSCRIPT}} <!-- TODO: Add video transcript (optional) -->
-              </div>
-            </details>
-
-            <!-- Toggle Embed Button -->
-            <button 
-              class="toggle-embed-button" 
-              id="toggleEmbedButton"
-              aria-pressed="false"
-              aria-controls="videoPlayer"
-              data-testid="button-toggle-embed">
-              {{WATCH_EMBED}} <!-- TODO: Add button text (e.g., "Watch on YouTube") -->
-            </button>
-          </div>
-
-          <!-- Video Media -->
-          <div class="video-media">
-            
-            <!-- Native Video Player -->
-            <div class="video-player-wrapper" id="videoPlayerWrapper">
-              <video 
-                id="videoPlayer"
-                class="video-player"
-                preload="metadata"
-                playsinline
-                controls
-                muted
-                poster="{{VIDEO_POSTER}}"
-                aria-describedby="videoCaption"
-                data-testid="video-player">
-                <!-- TODO: Add video poster image URL -->
-                <source src="{{VIDEO_SRC_MP4}}" type="video/mp4">
-                <!-- TODO: Add MP4 video source URL -->
-                <track 
-                  kind="captions" 
-                  srclang="en" 
-                  src="{{VIDEO_TRACK_VTT}}" 
-                  label="English">
-                <!-- TODO: Add WebVTT captions file URL (optional) -->
-                Your browser does not support the video tag.
-              </video>
-              <p class="video-caption" id="videoCaption" data-testid="text-video-caption">
-                {{VIDEO_CAPTION}} <!-- TODO: Add video caption/description -->
-              </p>
-            </div>
-
-            <!-- Privacy-Enhanced Embed (Hidden by default) -->
-            <div class="video-embed-wrapper" id="videoEmbedWrapper" style="display: none;">
-              <iframe
-                id="videoEmbed"
-                class="video-embed"
-                src=""
-                data-src="{{VIDEO_EMBED_URL}}"
-                title="{{VIDEO_TITLE}}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-                data-testid="video-embed">
-                <!-- TODO: Add YouTube nocookie or Vimeo embed URL -->
-              </iframe>
-              <p class="video-caption" data-testid="text-embed-caption">
-                {{VIDEO_CAPTION}}
-              </p>
-            </div>
-
-          </div>
-        </div>
+      <div class="video-wrapper">
+        <video id="backgroundVideo" loop muted playsinline preload="metadata" poster="{{VIDEO_POSTER}}">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          <!-- Optional captions -->
+          <!-- <track kind="captions" srclang="en" src="{{VIDEO_TRACK_VTT}}" label="English" default> -->
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
 
@@ -419,9 +340,9 @@
          ======================================== -->
     <section id="contact" class="contact-section section-padding" data-animate="slide-up">
       <div class="container">
-        <h2 class="section-title centered" data-testid="text-contact-heading">{{CONTACT_HEADING}}</h2> <!-- TODO: Add contact heading -->
+        <h2 class="section-title centered" data-testid="text-contact-heading">Contact.</h2> <!-- TODO: Add contact heading -->
         <p class="section-subtitle centered" data-testid="text-contact-subtext">
-          {{CONTACT_SUBTEXT}} <!-- TODO: Add contact subtext -->
+          I'd love to hear from you <!-- TODO: Add contact subtext -->
         </p>
 
         <div class="contact-grid">
@@ -472,22 +393,22 @@
           <div class="contact-info">
             <h3>Get in Touch</h3>
             <div class="contact-links">
-              <a href="mailto:{{CONTACT_EMAIL}}" class="contact-link" data-testid="link-email">
+              <a href="mailto:kora.argynova@gmail.com" class="contact-link" data-testid="link-email">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <span>{{CONTACT_EMAIL}}</span> <!-- TODO: Add your email -->
+                <span>Email</span> <!-- TODO: Add your email -->
               </a>
 
-              <a href="{{CONTACT_LINKEDIN}}" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-linkedin">
+              <a href="https://www.linkedin.com/in/korlan-argynova/" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-linkedin">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
                 <span>LinkedIn</span> <!-- TODO: Add your LinkedIn URL -->
               </a>
 
-              <a href="{{CONTACT_GITHUB}}" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-github">
+              <a href="https://github.com/K0ra" class="contact-link" target="_blank" rel="noopener noreferrer" data-testid="link-github">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -508,13 +429,16 @@
     <div class="container">
       <div class="footer-content">
         <p class="copyright" data-testid="text-copyright">
-          &copy; 2025 Korlan | Data Science. All rights reserved. <!-- TODO: Add your name for copyright -->
+          &copy; 2025 Korlan | Data Science. <!-- TODO: Add your name for copyright -->
         </p>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="{{FOOTER_LINK_1_URL}}" data-testid="link-footer-1">{{FOOTER_LINK_1_LABEL}}</a> <!-- TODO: Add footer link -->
-          <a href="{{FOOTER_LINK_2_URL}}" data-testid="link-footer-2">{{FOOTER_LINK_2_LABEL}}</a> <!-- TODO: Add footer link -->
-          <a href="{{FOOTER_LINK_3_URL}}" data-testid="link-footer-3">{{FOOTER_LINK_3_LABEL}}</a> <!-- TODO: Add footer link -->
-        </nav>
+        <button 
+          id="themeToggle" 
+          class="toggle-theme" 
+          type="button" 
+          aria-pressed="false" 
+          aria-label="Toggle color scheme">
+          Toggle theme
+        </button>
       </div>
     </div>
   </footer>

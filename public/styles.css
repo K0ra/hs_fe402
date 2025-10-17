@@ -63,6 +63,24 @@
       --color-border: hsl(220, 10%, 88%);
     }
   }
+
+  /* Explicit overrides via data-theme attribute */
+  html[data-theme="light"] {
+    --color-bg: hsl(0, 0%, 98%);
+    --color-surface: hsl(220, 10%, 96%);
+    --color-text-primary: hsl(220, 15%, 15%);
+    --color-text-secondary: hsl(220, 10%, 40%);
+    --color-text-tertiary: hsl(220, 10%, 60%);
+    --color-border: hsl(220, 10%, 88%);
+  }
+  html[data-theme="dark"] {
+    --color-bg: hsl(220, 15%, 10%);
+    --color-surface: hsl(220, 15%, 15%);
+    --color-text-primary: hsl(220, 10%, 95%);
+    --color-text-secondary: hsl(220, 10%, 70%);
+    --color-text-tertiary: hsl(220, 10%, 50%);
+    --color-border: hsl(220, 15%, 25%);
+  }
   
   /* ========================================
      BASE STYLES
@@ -1008,6 +1026,22 @@
   .footer-links a:hover {
     color: var(--color-accent);
   }
+
+  /* Theme toggle button */
+  .toggle-theme {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .toggle-theme:hover,
+  .toggle-theme:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
   
   /* ========================================
      ANIMATIONS
@@ -1220,5 +1254,26 @@
       background-color: white;
       color: black;
     }
+  }
+  
+  /* =============================
+     Video Auto Play/Pause
+     ============================= */
+  .video-section { margin-block: 60px; }
+  .section-title { text-align: center; margin-block: 0 16px; }
+  
+  .video-wrapper {
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
   }
   
