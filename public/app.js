@@ -663,4 +663,3 @@ const CONFIG = {
   
   // Expose cleanup for potential SPA usage
   window.portfolioCleanup = cleanup;
-  
