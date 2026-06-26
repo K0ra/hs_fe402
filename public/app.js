@@ -7,7 +7,7 @@
 // CONSTANTS & CONFIGURATION
 // ========================================
 const CONFIG = {
-    animationThreshold: 0.5, // Trigger animation when 50% visible
+    animationThreshold: 0.1, // Trigger animation when 10% visible (cards can be taller than the viewport)
     animationDelay: 100,
     smoothScrollOffset: 80,
   };
@@ -62,12 +62,13 @@ const CONFIG = {
   function initMobileNav() {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
-    const navLinks = navMenu.querySelectorAll('a');
   
     if (!navToggle || !navMenu) {
       console.warn('Navigation elements not found');
       return;
     }
+  
+    const navLinks = navMenu.querySelectorAll('a');
   
     // Toggle mobile menu
     navToggle.addEventListener('click', () => {
@@ -274,6 +275,25 @@ const CONFIG = {
     // Observe all animated elements
     animatedElements.forEach(element => {
       state.intersectionObserver.observe(element);
+    });
+
+    /**
+     * Safety net for the projects carousel: ensure cards are never permanently
+     * hidden. A project card can be taller than the viewport or clipped inside
+     * the horizontal scroll container, which can prevent the IntersectionObserver
+     * from ever reaching its threshold. Reveal any project card still hidden
+     * shortly after load so the projects list always appears.
+     */
+    function revealProjectCards() {
+      document
+        .querySelectorAll('.project-card[data-animate="reveal"]:not(.reveal--visible)')
+        .forEach(card => card.classList.add('reveal--visible'));
+    }
+
+    const fallbackTimer = setTimeout(revealProjectCards, 1500);
+    window.addEventListener('load', () => {
+      clearTimeout(fallbackTimer);
+      setTimeout(revealProjectCards, 600);
     });
   }
   
